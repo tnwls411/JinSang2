@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
@@ -29,6 +30,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     final static double mLatitude = 37.541697;   //위도
     final static double mLongitude = 126.840417;  //경도
+    public int map_size = 14;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,15 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
                 requestMyLocation();
             }
         });
+    }
 
+    public void biggerClicked(View v) {
+        map_size += 1;
+        onMapReady(map);
+    }
+    public void smallerClicked(View v) {
+        map_size -= 1;
+        onMapReady(map);
     }
 
     @Override
@@ -65,7 +75,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         LatLng position = new LatLng(mLatitude , mLongitude);
 
         //화면중앙의 위치와 카메라 줌비율
-        this.map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 14));
+        this.map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, map_size));
+
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(map_size);
+
+        googleMap.animateCamera(zoom);
 
         map.setOnMapClickListener(this);
     }
@@ -167,7 +181,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     private void showCurrentLocation(Location location) {
         LatLng curPoint = new LatLng(location.getLatitude(), location.getLongitude());
 
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 15));
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint, map_size));
     }
 
 }
