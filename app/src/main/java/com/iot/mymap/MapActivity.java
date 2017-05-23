@@ -56,11 +56,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     public void biggerClicked(View v) {
         map_size += 1;
-        onMapReady(map);
+        onMapChanged(map);
     }
     public void smallerClicked(View v) {
         map_size -= 1;
-        onMapReady(map);
+        onMapChanged(map);
     }
 
     @Override
@@ -76,6 +76,20 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
         //화면중앙의 위치와 카메라 줌비율
         this.map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, map_size));
+
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(map_size);
+
+        googleMap.animateCamera(zoom);
+
+        map.setOnMapClickListener(this);
+    }
+
+    public void onMapChanged(GoogleMap googleMap) {
+        Log.d(TAG, "GoogleMap is ready.");
+        this.map = googleMap;
+
+        //지도타입 - 일반
+        this.map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(map_size);
 
