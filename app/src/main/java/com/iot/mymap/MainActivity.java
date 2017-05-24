@@ -43,14 +43,13 @@ public class MainActivity extends AppCompatActivity
                     LinearLayout container = (LinearLayout) findViewById(R.id.container);
                     LayoutInflater inflater =
                             (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    inflater.inflate(R.layout.sublayout_alarm, container, true);
+                    inflater.inflate(R.layout.sublayout_alarm, container,true);
 
 
                 } else {
                     LinearLayout container = (LinearLayout) findViewById(R.id.container);
-                    LayoutInflater inflater =
-                            (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    inflater.inflate(R.layout.sublayout_alarm, container, false);
+                   container.removeAllViewsInLayout();
+
 
                 }
             }
@@ -59,16 +58,16 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+
                     setalarm.setChecked(false);
+
                     LinearLayout container = (LinearLayout) findViewById(R.id.container);
                     LayoutInflater inflater =
                             (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     inflater.inflate(R.layout.sublayout_distance, container, true);
             }else {
                     LinearLayout container = (LinearLayout) findViewById(R.id.container);
-                    LayoutInflater inflater =
-                            (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    inflater.inflate(R.layout.sublayout_alarm, container, false);
+                    container.removeAllViewsInLayout();
 
                 }
         }});
