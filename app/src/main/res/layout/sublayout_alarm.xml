@@ -32,4 +32,5 @@
             android:inputType="textPersonName"
             android:text="Name" />
     </LinearLayout>
+
 </LinearLayout>

@@ -4,6 +4,33 @@
                 android:layout_height="match_parent">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBaseline="@+id/insert"
+            android:layout_alignBottom="@+id/insert"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:text="TextView"/>
+
+        <Button
+            android:id="@+id/insert"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="insertClicked"
+            android:text="등록"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +51,7 @@
             />
 
         <EditText
-            android:id="@+id/PlaceInput"
+            android:id="@+id/placeInput"
             android:layout_width="225dp"
             android:layout_height="43dp"
             android:layout_marginEnd="8dp"
@@ -69,7 +96,7 @@
             android:textSize="20dp"/>
 
         <EditText
-            android:id="@+id/count"
+            android:id="@+id/countInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="5"
@@ -104,8 +131,8 @@
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
+        android:layout_height="300dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/linearLayout2"
         android:orientation="vertical"></LinearLayout>
 
