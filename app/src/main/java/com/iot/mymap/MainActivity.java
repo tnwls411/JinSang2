@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+        EditText distance = (EditText) findViewById(R.id.distance);
 
 //        Button button2 = (Button) findViewById(R.id.btnCheck);
 //        button2.setOnClickListener(new View.OnClickListener() {
