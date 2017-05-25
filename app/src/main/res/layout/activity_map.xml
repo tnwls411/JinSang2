@@ -21,6 +21,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/bigger"
         android:layout_marginBottom="16dp"/>
+    <Button
+        android:id="@+id/goLocationIntent"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:onClick="goLocintentClicked"
+        android:text="이동"
+        android:layout_marginBottom="29dp"
+        android:layout_above="@+id/bigger"
+        android:layout_alignStart="@+id/bigger"/>
 
     <Button android:layout_height="wrap_content"
             android:layout_width="wrap_content"
