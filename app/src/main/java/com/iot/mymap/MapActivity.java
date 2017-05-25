@@ -55,10 +55,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     }
 
     public void biggerClicked(View v) {
+
         map_size += 1;
         onMapChanged(map);
     }
     public void smallerClicked(View v) {
+
         map_size -= 1;
         onMapChanged(map);
     }

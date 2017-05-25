@@ -12,10 +12,13 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:layout_weight="1"
             android:paddingLeft="3dp"
             android:paddingRight="3dp"
             android:text="반경"
+            android:textColor="@android:color/black"
             android:textStyle="bold" />
 
         <EditText
@@ -23,17 +26,19 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:layout_weight="1"
             android:paddingLeft="3dp"
             android:paddingRight="3dp"
             android:text="m 이내에 가지 않을경우"
+            android:textColor="@android:color/black"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -46,24 +51,41 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:layout_weight="1"
             android:paddingLeft="3dp"
             android:paddingRight="3dp"
             android:text="매일"
+            android:textColor="@android:color/black"
             android:textStyle="bold" />
 
         <TextClock
             android:id="@+id/textClock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:layout_weight="1" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:layout_weight="1"
-            android:text="에 알림을 설정"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="에 알림"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="71dp"
+            android:layout_height="wrap_content"
+            android:text="설정"
             android:textStyle="bold" />
 
     </LinearLayout>
