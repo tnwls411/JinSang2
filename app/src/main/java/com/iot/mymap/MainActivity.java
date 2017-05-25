@@ -14,7 +14,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 public class MainActivity extends AppCompatActivity
 {
     SQLiteDatabase db;
@@ -78,6 +77,9 @@ public class MainActivity extends AppCompatActivity
 
                 }
         }});
+
+
+
 
 
         Button insert = (Button) findViewById(R.id.insert);
