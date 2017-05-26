@@ -34,12 +34,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     LocationManager locManager;
     LocationListener locationListener;
-    //LocationReceiver receiver;        // 브로드캐스트 리시버의 인스턴스 정의
+//    LocationReceiver receiver;        // 브로드캐스트 리시버의 인스턴스 정의
 
     SupportMapFragment mapFragment;
     GoogleMap map;
-
-    MarkerOptions myLocationMarker;
 
     final static double _Latitude = 37.541697;   //위도
     final static double _Longitude = 126.840417;  //경도
@@ -96,6 +94,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         {
 
             @Override
+
             public void onLocationChanged(Location location)
             {
                 showCurrentLocation(location);
@@ -134,6 +133,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         }
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, locationListener);
     }
+
     public void biggerClicked(View v)
     {
         map_size += 1;
@@ -144,12 +144,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     {
         map_size -= 1;
         onMapChanged(map);
-    }
-
-    public void goLocintentClicked(View v)
-    {
-        Intent intent = new Intent(MapActivity.this, LocationAlertActivity.class);
-        startActivity(intent);
     }
 
     public void onMapChanged(GoogleMap googleMap)
@@ -167,7 +161,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         map.setOnMapClickListener(this);
     }
 
-
+    public void goLocintentClicked(View v)
+    {
+        Intent intent = new Intent(MapActivity.this, LocationAlertActivity.class);
+        startActivity(intent);
+    }
 
 //    public void onStop()   //해제
 //    {
@@ -310,7 +308,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private void showCurrentLocation(Location location) {
         LatLng curPoint = new LatLng(location.getLatitude(), location.getLongitude());
-
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 15));
     }
 
