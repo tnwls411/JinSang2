@@ -304,13 +304,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         Log.d(TAG,Integer.toString(Id));
         Toast.makeText(getApplicationContext(), "2 위도 : " + point.latitude + " 경도 : " + point.longitude, Toast.LENGTH_SHORT).show();
 
-        String Latitude = String.valueOf(point.latitude);
-        String Longitude = String.valueOf(point.longitude);
-        Intent send1 = new Intent(MapActivity.this, MainActivity.class);
-        Content content = new Content(0, null, 0, 0, Latitude, Longitude);
-        send1.putExtra("content", content);
-        startActivity(send1);
-        finish();
     }
 
     private void showCurrentLocation(Location location) {
