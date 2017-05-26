@@ -1,16 +1,21 @@
 package com.iot.mymap;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ListActivity extends AppCompatActivity {
+public class ListActivity extends MapActivity {
+
+
+    LocationReceiver receiver;  // 브로드캐스트 리시버의 인스턴스 정의
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,16 @@ public class ListActivity extends AppCompatActivity {
 //        final ListView listview = (ListView) findViewById(R.id.listView) ;
 //        listview.setAdapter(adapter) ;
 
+        Button stopBtn = (Button) findViewById(R.id.Unregister);
+        stopBtn.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                unregister();
+                Toast.makeText(getApplicationContext(), "근접 리스너 해제", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         FloatingActionButton add = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +48,43 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(setting);
             }
         });
+    }
+
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        //수신자 객체 생성하여 등록
+        receiver = new LocationReceiver(intentKey);
+        registerReceiver(receiver, receiver.getFilter());
+    }
+
+
+    /**
+     * 등록한 정보 해제
+     */
+    public void onStop()
+    {
+        super.onStop();
+        unregister();
+    }
+    private void unregister() {
+        if (_PendingIntentList != null) {
+            for (int i = 0; i < _PendingIntentList.size(); i++) {
+                PendingIntent curIntent = (PendingIntent) _PendingIntentList.get(i);
+                locManager.removeProximityAlert(curIntent);
+                _PendingIntentList.remove(i);
+            }
+        }
+
+        if (receiver != null)
+        {
+            locManager.removeUpdates(locationListener);
+            unregisterReceiver(receiver);
+            receiver = null;
+        }
+
     }
 
     @Override

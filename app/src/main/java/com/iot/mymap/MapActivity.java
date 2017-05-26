@@ -94,7 +94,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             public void onLocationChanged(Location location)
             {
                 showCurrentLocation(location);
-                Toast.makeText(getApplicationContext(), "1 위도 : " + location.getLatitude() + " 경도 : " + location.getLongitude(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "현재 위치 위도 : " + location.getLatitude() + " 경도 : " + location.getLongitude(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -157,11 +157,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         map.setOnMapClickListener(this);
     }
 
-    public void goLocintentClicked(View v)
-    {
-        Intent intent = new Intent(MapActivity.this, LocationAlertActivity.class);
-        startActivity(intent);
-    }
 
 
     @Override
@@ -298,7 +293,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         _PendingIntentList.add(intent);
         Log.d(TAG, "addproximityAlert.");
         Log.d(TAG,Integer.toString(Id));
-        Toast.makeText(getApplicationContext(), "2 위도 : " + point.latitude + " 경도 : " + point.longitude, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "지정 위치 위도 : " + point.latitude + " 경도 : " + point.longitude, Toast.LENGTH_SHORT).show();
 
     }
 

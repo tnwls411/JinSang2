@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         createDatabase("MyMap");
         createTable("MyList");
 
+
         Button button = (Button) findViewById(R.id.btnMap);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,9 +81,6 @@ public class MainActivity extends AppCompatActivity
 
                 }
         }});
-
-
-
 
 
         Button insert = (Button) findViewById(R.id.insert);
