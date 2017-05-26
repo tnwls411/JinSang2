@@ -12,7 +12,7 @@ import android.widget.Toast;
 /**
  * 브로드캐스팅 메시지를 받았을 때 처리할 수신자 정의
  */
-public class LocationReceiver extends BroadcastReceiver
+public class LocationReceiver extends BroadcastReceiver  //원하는 브로드캐스트 메시지가 도차가면 자동 호출
 {
     private String _ExpectedAction;
     private Intent _LastReceivedIntent;
