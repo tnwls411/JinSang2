@@ -34,7 +34,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     LocationManager locManager;
     LocationListener locationListener;
-//    LocationReceiver receiver;        // 브로드캐스트 리시버의 인스턴스 정의
 
     SupportMapFragment mapFragment;
     GoogleMap map;
@@ -83,9 +82,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             }
         });
 
-//        receiver = new LocationReceiver();
-//        IntentFilter filter = new IntentFilter(intentKey);
-//        registerReceiver(receiver, filter);
     }
 
     private void CurrentLocation()
@@ -167,13 +163,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         startActivity(intent);
     }
 
-//    public void onStop()   //해제
-//    {
-//        super.onStop();
-//        locManager.removeUpdates(locationListener);
-//        unregisterReceiver(receiver);
-//        receiver=null;
-//    }
 
     @Override
     public void onMapReady(GoogleMap googleMap)

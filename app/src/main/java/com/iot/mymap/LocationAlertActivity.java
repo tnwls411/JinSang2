@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 public class LocationAlertActivity extends MapActivity
 {
-    LocationReceiver receiver;
+    LocationReceiver receiver;  // 브로드캐스트 리시버의 인스턴스 정의
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,13 +37,13 @@ public class LocationAlertActivity extends MapActivity
     }
 
 
-    public void onStop()   //해제
+    /**
+     * 등록한 정보 해제
+     */
+    public void onStop()
     {
         super.onStop();
         unregister();
-//        locManager.removeUpdates(locationListener);
-//        unregisterReceiver(receiver);
-//        receiver=null;
     }
     private void unregister() {
         if (_PendingIntentList != null) {

@@ -8,6 +8,10 @@ import android.location.LocationManager;
 import android.util.Log;
 import android.widget.Toast;
 
+
+/**
+ * 브로드캐스팅 메시지를 받았을 때 처리할 수신자 정의
+ */
 public class LocationReceiver extends BroadcastReceiver
 {
     private String _ExpectedAction;
