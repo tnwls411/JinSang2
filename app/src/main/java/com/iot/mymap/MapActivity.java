@@ -256,7 +256,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
         //ProximityAlert 등록 , 리시버를 실행하도록 ProximityAlert에 의뢰
         Intent intent = new Intent(intentKey);
-        PendingIntent proximityIntent = PendingIntent.getBroadcast(this, Id, intent, 0);
+        PendingIntent proximityIntent = PendingIntent.getBroadcast(this, Id, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         Id++;
 
         String Latitude = String.valueOf(point.latitude);
