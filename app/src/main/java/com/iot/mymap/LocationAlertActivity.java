@@ -1,7 +1,6 @@
 package com.iot.mymap;
 
 import android.app.PendingIntent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,9 +31,9 @@ public class LocationAlertActivity extends MapActivity
     protected void onStart()
     {
         super.onStart();
-        receiver = new LocationReceiver();
-        IntentFilter filter = new IntentFilter(intentKey);
-        registerReceiver(receiver, filter);
+        //수신자 객체 생성하여 등록
+        receiver = new LocationReceiver(intentKey);
+        registerReceiver(receiver, receiver.getFilter());
     }
 
 
@@ -55,9 +54,12 @@ public class LocationAlertActivity extends MapActivity
             }
         }
 
-        if (receiver != null) {
+        if (receiver != null)
+        {
+            locManager.removeUpdates(locationListener);
             unregisterReceiver(receiver);
             receiver = null;
         }
+
     }
 }

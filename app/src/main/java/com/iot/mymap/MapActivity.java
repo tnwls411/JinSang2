@@ -42,11 +42,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     final static double _Latitude = 37.541697;   //위도
     final static double _Longitude = 126.840417;  //경도
 
-    String intentKey = "MapActivity";
+    String intentKey = "LocationProximity";
 
     public int map_size = 14;
     public int radius = 50;
-    public int Id = 0;
+    public int Id = 1;
+    public long expiration=-1;
 
     ArrayList _PendingIntentList;
 
@@ -98,7 +99,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             public void onLocationChanged(Location location)
             {
                 showCurrentLocation(location);
-                Toast.makeText(getApplicationContext(), "1 위도 : " + location.getLatitude() + " 경도 : " + location.getLongitude(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "현재위치 위도 : " + location.getLatitude() + " 경도 : " + location.getLongitude(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -272,8 +273,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
         //ProximityAlert 등록 , 리시버를 실행하도록 ProximityAlert에 의뢰
         Intent intent = new Intent(intentKey);
-        PendingIntent proximityIntent = PendingIntent.getBroadcast(this, Id, intent, 0);
-        Id++;
+        intent.putExtra("id", Id);
+        PendingIntent proximityIntent = PendingIntent.getBroadcast(this, Id, intent,PendingIntent.FLAG_CANCEL_CURRENT );
 
         Log.d(TAG, "getBroadcast.");
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
@@ -298,12 +299,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
          *              근접알림을 계속 지정하고 싶으면 -1
          * intent => 근접이벤트가 발생했을 때 실행할 인텐트 지정 ( 팬딩 인텐트)
          */
-        locManager.addProximityAlert(point.latitude, point.longitude, radius, -1, proximityIntent);
+        locManager.addProximityAlert(point.latitude, point.longitude, radius, expiration, proximityIntent);
         _PendingIntentList.add(intent);
         Log.d(TAG, "addproximityAlert.");
         Log.d(TAG,Integer.toString(Id));
-        Toast.makeText(getApplicationContext(), "2 위도 : " + point.latitude + " 경도 : " + point.longitude, Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(getApplicationContext(), "지정위치 #"+Id+"위도 : " + point.latitude + " 경도 : " + point.longitude, Toast.LENGTH_SHORT).show();
+        Id++;
     }
 
     private void showCurrentLocation(Location location) {
