@@ -1,10 +1,8 @@
 package com.iot.mymap;
 
-/**
- * Created by new on 2017-05-26.
- */
+import java.io.Serializable;
 
-public class Content1 {
+public class Content1 implements Serializable{
 
     int no2;
     String place2;

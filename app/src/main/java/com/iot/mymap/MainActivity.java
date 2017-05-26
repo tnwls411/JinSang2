@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.io.Serializable;
-
 public class MainActivity extends AppCompatActivity
 {
     SQLiteDatabase db;
@@ -201,9 +199,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void sendData(int no2, String place2, int count2, int distance2, String Latitude2, String Longitude2){
-        Intent send = new Intent(MainActivity.this, ListActivity.class);
+        Intent send2 = new Intent(MainActivity.this, ListActivity.class);
         Content1 content1 = new Content1(no2, place2, count2, distance2, Latitude2, Longitude2);
-        send.putExtra("content1", (Serializable) content1);
-        startActivity(send);
+        send2.putExtra("content1", content1);
+        startActivity(send2);
     }
 }

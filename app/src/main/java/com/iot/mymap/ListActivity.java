@@ -39,16 +39,17 @@ public class ListActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         TextView show = (TextView) findViewById(R.id.textView13);
-        Intent send = getIntent();
-        if (send != null) {
-            Content1 content1 = (Content1) send.getSerializableExtra("content1");
+        show.append("new, 2회, 126.4X37.2\n");
+//        Intent send2 = getIntent();
+//        if (send2 != null) {
+//            Content1 content1 = (Content1) send2.getSerializableExtra("content1");
 //            String place2 = content1.getPlace2();
 //            int count2 = content1.getCount2();
 //            String Latitude2 = content1.getLatitude2();
 //            String Longitude2 = content1.getLongitude2();
 //            show.append(place2 + ", " + count2 + "회, " + Latitude2 + "X" + Longitude2);
-            show.append("new, 2회, 0.0X0.0\n");
-        }
+//
+//        }
     }
 
 }

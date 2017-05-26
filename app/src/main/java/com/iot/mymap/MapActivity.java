@@ -275,6 +275,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         PendingIntent proximityIntent = PendingIntent.getBroadcast(this, Id, intent, 0);
         Id++;
 
+        String Latitude = String.valueOf(point.latitude);
+        String Longitude = String.valueOf(point.longitude);
+        Intent send1 = new Intent(MapActivity.this, MainActivity.class);
+        Content content = new Content(0, null, 0 , 0, Latitude, Longitude);
+        send1.putExtra("content", content);
+        startActivity(send1);
+
         Log.d(TAG, "getBroadcast.");
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
